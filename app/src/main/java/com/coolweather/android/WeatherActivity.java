@@ -21,6 +21,7 @@ import com.coolweather.android.gson.Air;
 import com.coolweather.android.gson.Forecast;
 import com.coolweather.android.gson.LifeStyle;
 import com.coolweather.android.gson.Weather;
+import com.coolweather.android.service.AutoUpdateService;
 import com.coolweather.android.util.HttpUtil;
 import com.coolweather.android.util.Utility;
 
@@ -239,6 +240,9 @@ public class WeatherActivity extends AppCompatActivity {
         carWashText.setText("洗车指数" + carWash);
         sportText.setText("运动建议" + sport);
         weatherLayout.setVisibility(View.VISIBLE);
+
+        Intent intent = new Intent(this, AutoUpdateService.class);
+        startService(intent);
     }
 
     public void requestWeather(final String weatherId) {
